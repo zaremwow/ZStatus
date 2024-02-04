@@ -1,0 +1,6 @@
+## Title: ZStatus
+## Interface: 11500
+## Notes: Minimal status display
+## Version: 1.2
+## SavedVariables: ZStatusDB
+ZStatus.lua
