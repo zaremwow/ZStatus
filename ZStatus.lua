@@ -6,6 +6,7 @@ local config = {
     updateInterval = 30,
     localtime = true,
     font = { STANDARD_TEXT_FONT, 12, "OUTLINE" },
+    fontShadow = { 0, 0, 0, 0.35 },
     color = { 0, 1, 0 },
 }
 
@@ -39,23 +40,21 @@ texture:Hide()
 
 local statusString1 = statusFrame:CreateFontString(nil, "OVERLAY", "GameFontNormal")
 statusString1:SetPoint("TOPLEFT", 0, 0)
-statusString1:SetFont(unpack(config.font))
-statusString1:SetTextColor(unpack(config.color))
 
 local statusString2 = statusFrame:CreateFontString(nil, "OVERLAY", "GameFontNormal")
-statusString2:SetPoint("TOPLEFT", 0, -14)
-statusString2:SetFont(unpack(config.font))
-statusString2:SetTextColor(unpack(config.color))
+statusString2:SetPoint("TOPLEFT", 0, -12)
 
 local statusString3 = statusFrame:CreateFontString(nil, "OVERLAY", "GameFontNormal")
-statusString3:SetPoint("TOPLEFT", 0, -28)
-statusString3:SetFont(unpack(config.font))
-statusString3:SetTextColor(unpack(config.color))
+statusString3:SetPoint("TOPLEFT", 0, -24)
 
 local statusString4 = statusFrame:CreateFontString(nil, "OVERLAY", "GameFontNormal")
-statusString4:SetPoint("TOPLEFT", 0, -42)
-statusString4:SetFont(unpack(config.font))
-statusString4:SetTextColor(unpack(config.color))
+statusString4:SetPoint("TOPLEFT", 0, -36)
+
+for _, v in next, { statusString1, statusString2, statusString3, statusString4 } do
+    v:SetFont(unpack(config.font))
+    v:SetTextColor(unpack(config.color))
+    v:SetShadowColor(unpack(config.fontShadow))
+end
 
 -------------------------------------------------------------------------------
 --- Functions
@@ -99,8 +98,8 @@ local function SetStatusText()
     local xpRemaining = (xpMax - xp)
     local exhaustion = GetXPExhaustion() or 0
 
-    statusString1:SetFormattedText("%s %s", zone, clock)
-    statusString2:SetFormattedText("(%d) %d/%d", slots, home, world)
+    statusString1:SetFormattedText("(%d) %s %s", slots, zone, clock)
+    statusString2:SetFormattedText("%d/%d", home, world)
     statusString3:SetFormattedText("%d %d (%d%%)", xpRemaining, exhaustion, xpPerc)
     statusString4:SetText(nil)
 end

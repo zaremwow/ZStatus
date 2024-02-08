@@ -1,5 +1,5 @@
 ## Title: ZStatus
-## Interface: 11500
+## Interface: 11501
 ## Notes: Minimal status display
 ## Version: 1.2
 ## SavedVariables: ZStatusDB
